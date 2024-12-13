@@ -80,6 +80,10 @@ function getHumanChoice() {
 console.log(`Human chooses ${getHumanChoice()}!`);
 
 // score tracker
+let humanScore = 0;
+let computerScore = 0;
+
+
 
 // single round logic
 
