@@ -5,7 +5,7 @@ console.log("This is a test");
 function getComputerChoice() {
 
   // generate random number between 0, 1, 2 and store in variable
-  let randomNum =  Math.floor(Math.random() * 3);
+  const randomNum =  Math.floor(Math.random() * 3);
 
   // random number decides the computer's play and stores the choice in a variable
   let computerChoice;
