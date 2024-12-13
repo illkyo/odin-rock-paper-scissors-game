@@ -37,10 +37,10 @@ function getHumanChoice() {
   // create a variable storing user input
   let promptInput;
   // create a variable that translates it into rock, paper or scissors
-  let userChoice;
+  let humanChoice;
 
   // keep asking user until their input evaluates to rock, paper or scissors
-  while (userChoice === undefined) {
+  while (humanChoice === undefined) {
     // ask user to input a value of either 0, 1 or 2
     promptInput = prompt("Rock = 0, Paper = 1, Scissors = 2", "");
 
@@ -51,34 +51,32 @@ function getHumanChoice() {
     // if cancel is clicked in prompt window game is exited
     switch(promptInput) {
       case '0':
-        userChoice = 'Rock';
+        humanChoice = 'Rock';
         break
       case '1':
-        userChoice = 'Paper';
+        humanChoice = 'Paper';
         break
       case '2':
-        userChoice = 'Scissors';
+        humanChoice = 'Scissors';
         break
       case null:
-        userChoice = 'EXIT'
+        humanChoice = 'EXIT'
         alert("Game Exited.")
         break
       default:
-        userChoice = undefined;
+        humanChoice = undefined;
         alert("Only values 0, 1 or 2 are accepted. Please enter either 0, 1 or 2");
         break
     }
   }
 
   // return the variable containing choice
-  return userChoice;
+  return humanChoice;
 }
 
 // score tracker
 let humanScore = 0;
 let computerScore = 0;
-
-
 
 // single round logic
 
