@@ -85,37 +85,43 @@ function playRound(humanChoice, computerChoice) {
     console.log("Game Exited."); // console outputs exit message
     alert("You have exited the game.");
   } else if (humanChoice == computerChoice) { // if both choices are the same it's a draw
-    console.log("Draw!");
+    console.log(`Draw!\n\nScore\nHuman: ${humanScore}\nComputer: ${computerScore}`);
     // score unchanged
   } else if (humanChoice == 'Rock') { // condition if user chooses rock
       if (computerChoice == 'Paper') {
-        console.log("Rock gets covered up by Paper! You lose a point."); // condition if user loses, computer wins
+        // condition if user loses, computer wins
         // decrement human score
         // increment computer score
+        console.log(`Rock gets covered up by Paper! You lose.\n\nScore\nHuman: ${(humanScore != 0) ? --humanScore : humanScore}\nComputer: ${++computerScore}`);
       } else {
-        console.log("Rock crushes Scissors! You win a point."); // condition if user wins, computer loses
+        // condition if user wins, computer loses
         // increment human score
         // decrement computer score
+        console.log(`Rock crushes Scissors! You win.\n\nScore\nHuman: ${++humanScore}\nComputer: ${(computerScore != 0) ? --computerScore : computerScore}`);
       }
   } else if (humanChoice == 'Paper') { // condition if user chooses paper
       if (computerChoice == 'Scissors') {
-        console.log("Paper gets cut by Scissors! You lose a point."); // condition if user loses, computer wins
+        // condition if user loses, computer wins
         // decrement human score
         // increment computer score
+        console.log(`Paper gets cut by Scissors! You lose.\n\nScore\nHuman: ${(humanScore != 0) ? --humanScore : humanScore}\nComputer: ${++computerScore}`);
       } else {
-        console.log("Paper covers up Rock! You win a point."); // condition if user wins, computer loses
+        // condition if user wins, computer loses
         // increment human score
         // decrement computer score
+        console.log(`Paper covers up Rock! You win.\n\nScore\nHuman: ${++humanScore}\nComputer: ${(computerScore != 0) ? --computerScore : computerScore}`);
       }
   } else { // otherwise it will be scissors
       if (computerChoice == 'Rock'){
-        console.log("Scissors gets crushed by Rock! You lose a point."); // condition if user loses, computer wins
+        // condition if user loses, computer wins
         // decrement human score
         // increment computer score
+        console.log(`Scissors gets crushed by Rock! You lose.\n\nScore\nHuman: ${(humanScore != 0) ? --humanScore : humanScore}\nComputer: ${++computerScore}`);
       } else {
-        console.log("Scissors cuts up Paper! You win a point."); // condition if user wins, computer loses
+        // condition if user wins, computer loses
         // increment human score
         // decrement computer score
+        console.log(`Scissors cuts up Paper! You win.\n\nScore\nHuman: ${++humanScore}\nComputer: ${(computerScore != 0) ? --computerScore : computerScore}`);
       }
   }
 }
