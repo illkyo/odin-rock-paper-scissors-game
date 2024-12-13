@@ -29,8 +29,6 @@ function getComputerChoice() {
   return computerChoice;
 
 }
-// output resulting choice to console
-console.log(`Computer chooses ${getComputerChoice()}!`);
 
 // user logic
 // create a function
@@ -75,9 +73,6 @@ function getHumanChoice() {
   // return the variable containing choice
   return userChoice;
 }
-
-// output resulting choice to console
-console.log(`Human chooses ${getHumanChoice()}!`);
 
 // score tracker
 let humanScore = 0;
