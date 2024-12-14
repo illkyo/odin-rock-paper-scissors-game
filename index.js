@@ -73,60 +73,84 @@ function getHumanChoice() {
   return humanChoice;
 }
 
-// score tracker
-let humanScore = 0;
-let computerScore = 0;
+// whole game logic
+function playGame() {
 
-// single round logic, takes in the functions that return user choice and computer choice
-function playRound(humanChoice, computerChoice) {
+  // score tracker
+  let humanScore = 0;
+  let computerScore = 0;
 
-  // how this function runs depends on the choices
-  if (humanChoice == 'EXIT') { // if user chooses to exit 
-    console.log("Game Exited."); // console outputs exit message
-    alert("You have exited the game.");
-  } else if (humanChoice == computerChoice) { // if both choices are the same it's a draw
-    console.log(`Draw!\n\nScore\nHuman: ${humanScore}\nComputer: ${computerScore}`);
-    // score unchanged
-  } else if (humanChoice == 'Rock') { // condition if user chooses rock
-      if (computerChoice == 'Paper') {
-        // condition if user loses, computer wins
-        // decrement human score
-        // increment computer score
-        console.log(`Rock gets covered up by Paper! You lose.\n\nScore\nHuman: ${(humanScore != 0) ? --humanScore : humanScore}\nComputer: ${++computerScore}`);
-      } else {
-        // condition if user wins, computer loses
-        // increment human score
-        // decrement computer score
-        console.log(`Rock crushes Scissors! You win.\n\nScore\nHuman: ${++humanScore}\nComputer: ${(computerScore != 0) ? --computerScore : computerScore}`);
-      }
-  } else if (humanChoice == 'Paper') { // condition if user chooses paper
-      if (computerChoice == 'Scissors') {
-        // condition if user loses, computer wins
-        // decrement human score
-        // increment computer score
-        console.log(`Paper gets cut by Scissors! You lose.\n\nScore\nHuman: ${(humanScore != 0) ? --humanScore : humanScore}\nComputer: ${++computerScore}`);
-      } else {
-        // condition if user wins, computer loses
-        // increment human score
-        // decrement computer score
-        console.log(`Paper covers up Rock! You win.\n\nScore\nHuman: ${++humanScore}\nComputer: ${(computerScore != 0) ? --computerScore : computerScore}`);
-      }
-  } else { // otherwise it will be scissors
-      if (computerChoice == 'Rock'){
-        // condition if user loses, computer wins
-        // decrement human score
-        // increment computer score
-        console.log(`Scissors gets crushed by Rock! You lose.\n\nScore\nHuman: ${(humanScore != 0) ? --humanScore : humanScore}\nComputer: ${++computerScore}`);
-      } else {
-        // condition if user wins, computer loses
-        // increment human score
-        // decrement computer score
-        console.log(`Scissors cuts up Paper! You win.\n\nScore\nHuman: ${++humanScore}\nComputer: ${(computerScore != 0) ? --computerScore : computerScore}`);
-      }
+  // rounds played
+  let roundCounter = 1;
+
+  // output message to console
+  let result;
+
+  // single round logic, takes in the functions that return user choice and computer choice
+  function playRound(humanChoice, computerChoice) {
+
+    // how this function runs depends on the choices
+    if (humanChoice == 'EXIT') { // if user chooses to exit
+      return humanChoice;
+    } else if (humanChoice == computerChoice) { // if both choices are the same it's a draw
+      return (`Draw!\n\nScore\nHuman: ${humanScore}\nComputer: ${computerScore}`);
+      // score unchanged
+    } else if (humanChoice == 'Rock') { // condition if user chooses rock
+        if (computerChoice == 'Paper') {
+          // condition if user loses, computer wins
+          // decrement human score
+          // increment computer score
+          return (`Rock gets covered up by Paper! You lose a point.\n\nScore\nHuman: ${(humanScore != 0) ? --humanScore : humanScore}\nComputer: ${++computerScore}`);
+        } else {
+          // condition if user wins, computer loses
+          // increment human score
+          // decrement computer score
+          return (`Rock crushes Scissors! You win a point.\n\nScore\nHuman: ${++humanScore}\nComputer: ${(computerScore != 0) ? --computerScore : computerScore}`);
+        }
+    } else if (humanChoice == 'Paper') { // condition if user chooses paper
+        if (computerChoice == 'Scissors') {
+          // condition if user loses, computer wins
+          // decrement human score
+          // increment computer score
+          return (`Paper gets cut by Scissors! You lose a point.\n\nScore\nHuman: ${(humanScore != 0) ? --humanScore : humanScore}\nComputer: ${++computerScore}`);
+        } else {
+          // condition if user wins, computer loses
+          // increment human score
+          // decrement computer score
+          return (`Paper covers up Rock! You win a point.\n\nScore\nHuman: ${++humanScore}\nComputer: ${(computerScore != 0) ? --computerScore : computerScore}`);
+        }
+    } else { // otherwise it will be scissors
+        if (computerChoice == 'Rock'){
+          // condition if user loses, computer wins
+          // decrement human score
+          // increment computer score
+          return (`Scissors gets crushed by Rock! You lose a point.\n\nScore\nHuman: ${(humanScore != 0) ? --humanScore : humanScore}\nComputer: ${++computerScore}`);
+        } else {
+          // condition if user wins, computer loses
+          // increment human score
+          // decrement computer score
+          return (`Scissors cuts up Paper! You win a point.\n\nScore\nHuman: ${++humanScore}\nComputer: ${(computerScore != 0) ? --computerScore : computerScore}`);
+        }
+    }
   }
+
+  // play game for 5 rounds
+  while (roundCounter < 6) {
+    console.log(`ROUND ${roundCounter++}`); // show current round number and increments after
+    result = playRound(getHumanChoice(), getComputerChoice()); // returns a string
+    if (result == 'EXIT') { 
+      console.log(`Game Exited. \nScore\nHuman: ${humanScore}\nComputer: ${computerScore}`);
+      alert("You have exited the game.");
+      break // if user chooses to exit (cancels the prompt) the game is exited and program stops
+    } else {
+      console.log(result); // result contains a string that is outputed to console
+    }
+  }
+
+  // declaring the winner by comparing scores
+  (humanScore == computerScore) ? console.log("It's a Draw. Try to win next time.") :
+  (humanScore > computerScore) ? console.log("You win the game! Congratulations.") : console.log("Computer wins the game! Try again.");
+
 }
 
-playRound(getHumanChoice(), getComputerChoice());
-
-
-// whole game logic
+playGame();
