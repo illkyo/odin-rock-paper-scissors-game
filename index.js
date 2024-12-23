@@ -1,5 +1,3 @@
-console.log("This is a test");
-
 // computer logic
 // create a function
 function getComputerChoice() {
