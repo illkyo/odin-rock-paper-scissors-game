@@ -132,18 +132,18 @@ function playGame() {
     }
   }
 
-  // play game for 5 rounds
-  while (roundCounter < 6) {
-    console.log(`ROUND ${roundCounter++}`); // show current round number and increments after
-    result = playRound(getHumanChoice(), getComputerChoice()); // returns a string
-    if (result == 'EXIT') { 
-      console.log(`Game Exited. \nScore\nHuman: ${humanScore}\nComputer: ${computerScore}`);
-      alert("You have exited the game.");
-      break // if user chooses to exit (cancels the prompt) the game is exited and program stops
-    } else {
-      console.log(result); // result contains a string that is outputed to console
-    }
-  }
+  // // play game for 5 rounds
+  // while (roundCounter < 6) {
+  //   console.log(`ROUND ${roundCounter++}`); // show current round number and increments after
+  //   result = playRound(getHumanChoice(), getComputerChoice()); // returns a string
+  //   if (result == 'EXIT') { 
+  //     console.log(`Game Exited. \nScore\nHuman: ${humanScore}\nComputer: ${computerScore}`);
+  //     alert("You have exited the game.");
+  //     break // if user chooses to exit (cancels the prompt) the game is exited and program stops
+  //   } else {
+  //     console.log(result); // result contains a string that is outputed to console
+  //   }
+  // }
 
   // declaring the winner by comparing scores
   (humanScore == computerScore) ? console.log("It's a Draw. Try to win next time.") :
