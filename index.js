@@ -28,51 +28,8 @@ function getComputerChoice() {
 
 }
 
-// user logic
-// create a function
-function getHumanChoice() {
-
-  // create a variable storing user input
-  let promptInput;
-  // create a variable that translates it into rock, paper or scissors
-  let humanChoice;
-
-  // keep asking user until their input evaluates to rock, paper or scissors
-  while (humanChoice === undefined) {
-    // ask user to input a value of either 0, 1 or 2
-    promptInput = prompt("Rock = 0, Paper = 1, Scissors = 2", "");
-
-    // user input conversion
-    // 0 denotes 'rock'
-    // 1 denotes 'paper'
-    // 2 denotes 'scissors'
-    // if cancel is clicked in prompt window game is exited
-    switch(promptInput) {
-      case '0':
-        humanChoice = 'Rock';
-        break
-      case '1':
-        humanChoice = 'Paper';
-        break
-      case '2':
-        humanChoice = 'Scissors';
-        break
-      case null:
-        humanChoice = 'EXIT'
-        break
-      default:
-        humanChoice = undefined;
-        alert("Only values 0, 1 or 2 are accepted. Please enter either 0, 1 or 2");
-        break
-    }
-  }
-
-  // return the variable containing choice
-  return humanChoice;
-}
-
 // whole game logic
-function playGame() {
+function playGame(humanChoice, computerChoice) {
 
   // score tracker
   let humanScore = 0;
@@ -131,19 +88,10 @@ function playGame() {
         }
     }
   }
-
-  // // play game for 5 rounds
-  // while (roundCounter < 6) {
-  //   console.log(`ROUND ${roundCounter++}`); // show current round number and increments after
-  //   result = playRound(getHumanChoice(), getComputerChoice()); // returns a string
-  //   if (result == 'EXIT') { 
-  //     console.log(`Game Exited. \nScore\nHuman: ${humanScore}\nComputer: ${computerScore}`);
-  //     alert("You have exited the game.");
-  //     break // if user chooses to exit (cancels the prompt) the game is exited and program stops
-  //   } else {
-  //     console.log(result); // result contains a string that is outputed to console
-  //   }
-  // }
+  
+  console.log(`ROUND ${roundCounter++}`);
+  result = playRound(humanChoice, computerChoice);
+  console.log(result);
 
   // declaring the winner by comparing scores
   (humanScore == computerScore) ? console.log("It's a Draw. Try to win next time.") :
@@ -156,18 +104,20 @@ function playGame() {
 const btnGroup = document.querySelector('.btn-group');
 
 btnGroup.addEventListener('click', (event) => {
-
-  console.log(event.target.id);
+  let humanChoice;
 
   switch(event.target.id) {
       case 'rock':
-          console.log('Rock button was clicked');
-          break;
+          humanChoice = 'Rock'
+          break
       case 'paper':
-          console.log('Paper button was clicked');
-          break;
+          humanChoice = 'Paper'
+          break
       case 'scissors':
-          console.log('Scissors button was clicked');
-          break;
+          humanChoice = 'Scissors'
+          break
   }
+
+  playGame(humanChoice, getComputerChoice());
+
 });
