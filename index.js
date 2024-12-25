@@ -151,4 +151,23 @@ function playGame() {
 
 }
 
-playGame();
+// playGame();
+
+const btnGroup = document.querySelector('.btn-group');
+
+btnGroup.addEventListener('click', (event) => {
+
+  console.log(event.target.id);
+
+  switch(event.target.id) {
+      case 'rock':
+          console.log('Rock button was clicked');
+          break;
+      case 'paper':
+          console.log('Paper button was clicked');
+          break;
+      case 'scissors':
+          console.log('Scissors button was clicked');
+          break;
+  }
+});
