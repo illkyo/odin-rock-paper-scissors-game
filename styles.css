@@ -1,8 +1,12 @@
-.btn-group {
+.container {
   display: flex;
   justify-content: center;
-  height: 95vh;
   align-items: center;
+  height: 95vh;
+}
+
+.btn-group {
+  display: flex;
   gap: 100px;
 }
 
