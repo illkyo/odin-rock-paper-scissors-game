@@ -11,8 +11,7 @@
   display: grid;
   grid-template-rows: 150px 150px;
   justify-content: center;
-  align-content: space-evenly;
-  height: 65vh;
+  margin: 125px 0 125px 0;
 }
 
 .game-text {
@@ -22,13 +21,21 @@
   text-align: center;
 }
 
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
 .btn-group {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 100px;
 }
 
-button {
+.btn-group button {
   display: flex;
   justify-content: center;
   max-width: 90px;
