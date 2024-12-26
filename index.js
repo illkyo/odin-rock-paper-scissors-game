@@ -31,75 +31,79 @@ function getComputerChoice() {
 // whole game logic
 function playGame(humanChoice, computerChoice) {
 
-  // score tracker
+  // score trackers
   let humanScore = 0;
   let computerScore = 0;
+  const outcome = document.querySelector('.outcome');
+  const score = document.querySelector('.score');
 
   // rounds played
   let roundCounter = 1;
-
-  // output message to console
-  let result;
+  const roundNum = document.querySelector('.round');
 
   // single round logic, takes in the functions that return user choice and computer choice
-  function playRound(humanChoice, computerChoice) {
+  function playRound(humanChoice, computerChoice, outcome, score) {
 
     // how this function runs depends on the choices
     if (humanChoice == 'EXIT') { // if user chooses to exit
       return humanChoice;
     } else if (humanChoice == computerChoice) { // if both choices are the same it's a draw
-      return (`Draw!\n\nScore\nHuman: ${humanScore}\nComputer: ${computerScore}`);
       // score unchanged
+      outcome.textContent = "Draw!";
+      score.textContent = `Human: ${humanScore} Computer: ${computerScore}`;
     } else if (humanChoice == 'Rock') { // condition if user chooses rock
         if (computerChoice == 'Paper') {
           // condition if user loses, computer wins
           // decrement human score
           // increment computer score
-          return (`Rock gets covered up by Paper! You lose a point.\n\nScore\nHuman: ${(humanScore != 0) ? --humanScore : humanScore}\nComputer: ${++computerScore}`);
+          outcome.textContent = "Rock gets covered up by Paper! You lose a point.";
+          score.textContent = `Human: ${(humanScore != 0) ? --humanScore : humanScore} Computer: ${++computerScore}`;
         } else {
           // condition if user wins, computer loses
           // increment human score
           // decrement computer score
-          return (`Rock crushes Scissors! You win a point.\n\nScore\nHuman: ${++humanScore}\nComputer: ${(computerScore != 0) ? --computerScore : computerScore}`);
+          outcome.textContent = "Rock crushes Scissors! You win a point.";
+          score.textContent = `Human: ${++humanScore} Computer: ${(computerScore != 0) ? --computerScore : computerScore}`;
         }
     } else if (humanChoice == 'Paper') { // condition if user chooses paper
         if (computerChoice == 'Scissors') {
           // condition if user loses, computer wins
           // decrement human score
           // increment computer score
-          return (`Paper gets cut by Scissors! You lose a point.\n\nScore\nHuman: ${(humanScore != 0) ? --humanScore : humanScore}\nComputer: ${++computerScore}`);
+          outcome.textContent = "Paper gets cut by Scissors! You lose a point.";
+          score.textContent = `Human: ${(humanScore != 0) ? --humanScore : humanScore} Computer: ${++computerScore}`;
         } else {
           // condition if user wins, computer loses
           // increment human score
           // decrement computer score
-          return (`Paper covers up Rock! You win a point.\n\nScore\nHuman: ${++humanScore}\nComputer: ${(computerScore != 0) ? --computerScore : computerScore}`);
+          outcome.textContent = "Paper covers up Rock! You win a point.";
+          score.textContent = `Human: ${++humanScore} Computer: ${(computerScore != 0) ? --computerScore : computerScore}`;
         }
     } else { // otherwise it will be scissors
         if (computerChoice == 'Rock'){
           // condition if user loses, computer wins
           // decrement human score
           // increment computer score
-          return (`Scissors gets crushed by Rock! You lose a point.\n\nScore\nHuman: ${(humanScore != 0) ? --humanScore : humanScore}\nComputer: ${++computerScore}`);
+          outcome.textContent = "Scissors gets crushed by Rock! You lose a point.";
+          score.textContent = `Human: ${(humanScore != 0) ? --humanScore : humanScore} Computer: ${++computerScore}`;
         } else {
           // condition if user wins, computer loses
           // increment human score
           // decrement computer score
-          return (`Scissors cuts up Paper! You win a point.\n\nScore\nHuman: ${++humanScore}\nComputer: ${(computerScore != 0) ? --computerScore : computerScore}`);
+          outcome.textContent = "Scissors cuts up Paper! You win a point.";
+          score.textContent = `Human: ${++humanScore} Computer: ${(computerScore != 0) ? --computerScore : computerScore}`;
         }
     }
   }
   
-  console.log(`ROUND ${roundCounter++}`);
-  result = playRound(humanChoice, computerChoice);
-  console.log(result);
+  roundNum.textContent = `ROUND ${roundCounter++}`;
+  playRound(humanChoice, computerChoice, outcome, score);
 
   // declaring the winner by comparing scores
-  (humanScore == computerScore) ? console.log("It's a Draw. Try to win next time.") :
-  (humanScore > computerScore) ? console.log("You win the game! Congratulations.") : console.log("Computer wins the game! Try again.");
+  (humanScore == computerScore) ? outcome.textContent = "It's a Draw. Try to win next time." :
+  (humanScore > computerScore) ? outcome.textContent = "You win the game! Congratulations." : outcome.textContent = "Computer wins the game! Try again.";
 
 }
-
-// playGame();
 
 const btnGroup = document.querySelector('.btn-group');
 
